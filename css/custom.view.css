@@ -5,8 +5,13 @@ body {
 }
 
 .full {
-  background: url('../resources/bg.jpg') repeat ; 
-  background-attachment: fixed;
+	background: url('../resources/bg.jpg') repeat ; 
+	/*-webkit-transition-property: background;
+	-webkit-transition-duration: 0.5s;
+	-webkit-transition-timing-function: ease;*/
+	background-attachment: fixed;
+	
+	
  
 }
 /*

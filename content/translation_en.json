@@ -6,6 +6,8 @@
 	"MENU_BIO" : "Biography",
 	"MENU_CONT" : "Contacts",
 	
+	"HEADER" : "Official site",
+	
     "COLOR" : "Color",
     "HELLO" : "Hello",
     "HELLO_HABR" : "Hello Habrahabr!"

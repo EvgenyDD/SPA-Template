@@ -1,6 +1,7 @@
 // app.js
 var routerApp = angular.module('routerApp', ['ui.router', 'ui.bootstrap', 'ngResource']);
 var languageMode = 'by';
+var curPage = 1;
 
 routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {	
     $urlRouterProvider.otherwise('/home');
@@ -48,7 +49,7 @@ routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
 		.state('pub', {
 			url: '/pub',
 			templateUrl: function(stateParams) {
-                  return 'content/' + languageMode + '/publications.html';
+                  return 'content/' + languageMode + '/publications_' + curPage + '.html';
 			}
 		})
 		
@@ -67,6 +68,24 @@ routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
 		})
 		
 }); // closes $routerApp.config()
+
+routerApp.controller('PaginationCtrl', function ($scope, $log, $state) {
+	$scope.totalItems = 25;//what the fuck 25 equal to 3 pagination buttons?
+	$scope.currentPage = curPage;
+
+	$scope.setPage = function (pageNo) {
+		$scope.currentPage = pageNo;
+	};
+
+	$scope.loadPage = function() {
+		curPage = $scope.currentPage;
+		$state.forceReload();
+	}
+
+ /* $scope.maxSize = 5;
+  $scope.bigTotalItems = 10;
+  $scope.bigCurrentPage = 1;*/
+});
 
 
 routerApp.controller('MainController', function ($scope, $state, translationService) {
@@ -98,30 +117,9 @@ routerApp.controller('MainController', function ($scope, $state, translationServ
 
 routerApp.service('translationService', function($resource) {  
 	this.getTranslation = function($scope) {
-		console.log('#changing menu translations:');
-		var languageFilePath = 'translation_' + languageMode + '.json';
-		console.log(languageFilePath);
+		var languageFilePath = 'content/translation_' + languageMode + '.json';
 		$resource(languageFilePath).get(function (data) {
 			$scope.translation = data;
 		});
 	};
 }); // closes $routerApp.service(translationService)
-
-
-/*
-routerApp.controller('formController', function($scope) {
-  
-	// we will store our form data in this object
-	$scope.formData = {};
-	
-	$scope.formData.breakfast = false;
-	$scope.formData.lunch = false;
-	$scope.formData.dinner = false;
-	
-	$scope.formData.lang = "EN";
-
-	// COLLAPSE =====================
-	$scope.isCollapsed = false;
-	
-});
-*/

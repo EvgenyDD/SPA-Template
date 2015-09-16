@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html class="full">
+<html class="full" style="position: relative;
+  min-height: 100%;">
 <head>  
 	<title>Official Site</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -30,7 +31,7 @@
 </head>
 
 <!-- apply our angular app to our site -->
-<body ng-app="routerApp" ng-controller="MainController">
+<body ng-app="routerApp" ng-controller="MainController" style="margin-bottom: 60px;">
 
 	<!-- CONTAINER -->
 	<div class="container" >
@@ -41,7 +42,9 @@
 			<div class="panel-body">
 				
 				<div class="col-sm-8">
-					<h3>OFFICIAL SITE</h3></div>
+					<a ui-sref="home">
+					<h3>{{translation.HEADER}}</h3></div>
+					</a>
 					
 				<div class="col-sm-4">
 				
@@ -82,7 +85,7 @@
 			{{translation.HELLO_HABR}}
 
 				<!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
-				<div ui-view ></div>
+				<div ui-view autoscroll="false"></div>
 				
 				<!-- SHOW OFF OUR FORMDATA OBJECT -->
 				<!-- <pre>
@@ -92,9 +95,14 @@
 		
 		<!-- FOOTER -->
 		<!-- <div class="navbar-fixed-bottom row-fluid"> -->
-			<div class="navbar-inner">
+			<!-- <div class="navbar-inner"> -->
+			<div class="navbar-bottom ">
 			<div class="container">
-				<div id="footer" style="background-color:#8822C2;clear:both;text-align:center;">
+				<div id="footer" style="position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #f5f5f5;">
 				<h4>Copyright © 2015 Evgeny Dolgalev<h4>
 				</div>
 			</div></div>
