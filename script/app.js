@@ -3,9 +3,9 @@ var routerApp = angular.module('routerApp', ['ui.router', 'ui.bootstrap', 'ngRes
 var languageMode = 'by';
 var curPage = 1;
 
-routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {	
+routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
-	
+
 	$provide.decorator('$state', function($delegate, $stateParams) {
         $delegate.forceReload = function() {
             return $delegate.go($delegate.current, $stateParams, {
@@ -14,9 +14,9 @@ routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
         };
         return $delegate;
     });
-    
+
     $stateProvider
-       
+
         /* HOME STATES */
         .state('home', {
             url: '/home',
@@ -24,49 +24,49 @@ routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
                   return 'content/' + languageMode + '/home.html';
 			}
         })
-		
+
 		.state('music', {
 			url: '/music',
 			templateUrl: function(stateParams) {
                   return 'content/' + languageMode + '/music.html';
 			}
 		})
-		
+
 		.state('discog', {
 			url: '/discography',
 			templateUrl: function(stateParams) {
                   return 'content/' + languageMode + '/discography.html';
 			}
 		})
-		
+
 		.state('foto', {
 			url: '/foto',
 			templateUrl: function(stateParams) {
                   return 'content/' + languageMode + '/fotoalbum.html';
 			}
 		})
-		
+
 		.state('pub', {
 			url: '/pub',
 			templateUrl: function(stateParams) {
                   return 'content/' + languageMode + '/publications_' + curPage + '.html';
 			}
 		})
-		
+
 		.state('biogr', {
 			url: '/biography',
 			templateUrl: function(stateParams) {
                   return 'content/' + languageMode + '/biography.html';
 			}
 		})
-		
+
 		.state('contacts', {
 			url: '/contacts',
 			templateUrl: function(stateParams) {
                   return 'content/' + languageMode + '/contacts.html';
 			}
 		})
-		
+
 }); // closes $routerApp.config()
 
 routerApp.controller('PaginationCtrl', function ($scope, $log, $state) {
@@ -96,26 +96,26 @@ routerApp.controller('MainController', function ($scope, $state, translationServ
 		EN: false,
 		RU: false
 	};
-	
+
 	$scope.$watch('radioModel', function (val) {
 		var loaded = false;
 		return function (val) {
 			languageMode = val;
 
-			if (loaded) {
-				loaded = true;          
+			if (!loaded) {
+				loaded = true;
 			} else {
 				$state.forceReload();
 				translationService.getTranslation($scope);
 			}
 		};
     }());
-	
+
 	translationService.getTranslation($scope);
 }); // closes $routerApp.controller(MainController)
 
 
-routerApp.service('translationService', function($resource) {  
+routerApp.service('translationService', function($resource) {
 	this.getTranslation = function($scope) {
 		var languageFilePath = 'content/translation_' + languageMode + '.json';
 		$resource(languageFilePath).get(function (data) {
