@@ -1,0 +1,15 @@
+body {
+	margin-top: 10px;
+	/*margin-bottom: 50px;*/
+	background: none;
+}
+
+.full {
+  background: url('../resources/bg.jpg') repeat ; 
+  background-attachment: fixed;
+ 
+}
+/*
+div.ui-view{
+	opacity: 0.5;
+}*/

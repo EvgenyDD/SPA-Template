@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html class="full">
+<head>  
+	<title>Official Site</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	
+	<!-- CSS (load BOOTSTRAP) -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	
+	<link rel='stylesheet' href='css/custom.view.css' type='text/css' media='all'>
+	
+	<style>
+		.navbar { border-radius:0; }
+	</style>
+
+	<!-- JS (load ANGULAR, ui-router, and custom JS file) -->
+	<!-- <script src="http://code.angularjs.org/1.2.13/angular.js"></script> -->
+	<script src="script/angular.js"></script>
+	<script src="script/angular-ui-router.min.js"></script>
+	<script src="script/app.js"></script>
+	
+	<script src="script/ui-bootstrap-tpls-0.11.0.js"></script>
+	<script src="script/angular-route.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular-resource.min.js"></script>
+	
+	<!-- SOMETHING /////////////// -->
+	<meta http-equiv="KEYWORDS" content="тег, структура html, заголовок страницы, ключевые слова тут">
+	<meta http-equiv="DESCRIPTION" content="Краткое описание страницы-- Описание структура html и элементов заголовка">	
+	
+</head>
+
+<!-- apply our angular app to our site -->
+<body ng-app="routerApp" ng-controller="MainController">
+
+	<!-- CONTAINER -->
+	<div class="container" >
+	
+		<!-- HEADER -->
+		<div class="row">
+			<div class="panel panel-default">
+			<div class="panel-body">
+				
+				<div class="col-sm-8">
+					<h3>OFFICIAL SITE</h3></div>
+					
+				<div class="col-sm-4">
+				
+					<div class="btn-toolbar pull-right" >
+						<div class="btn-group" data-toggle="buttons" >
+							<button class="btn" ng-model="radioModel" btn-radio="'by'">BY</button>
+							<button class="btn" ng-model="radioModel" btn-radio="'en'">EN</button>
+							<button class="btn" ng-model="radioModel" btn-radio="'ru'">RU</button>	
+						</div>
+					</div>
+				</div>
+					
+			</div>
+			</div>
+		</div>
+		
+		<!-- MENU+CONTENT -->
+		<div class="row">
+			<!-- MENU -->
+			<div class="col-sm-2">
+
+				<ul class="nav nav-pills nav-stacked" style="text-align:right; height:100%;">
+					<li><a ui-sref="music" style="background-image: url('resources/hex0.png');">{{translation.MENU_MUSIC}}</a></li>
+					<li><a ui-sref="discog" style="background-image: url('resources/hex1.png');">{{translation.MENU_DISC}}</a></li>
+					<li><a ui-sref="foto" style="background-image: url('resources/hex1.png');">{{translation.MENU_FOTO}}</a></li>
+					<li><a ui-sref="pub" style="background-image: url('resources/hex2.png');">{{translation.MENU_PUB}}</a></li>
+					<li><a ui-sref="biogr" style="background-image: url('resources/hex0.png');">{{translation.MENU_BIO}}</a></li>
+					<li><a ui-sref="contacts" style="background-image: url('resources/hex1.png');">{{translation.MENU_CONT}}</a></li>
+					<li><a ui-sref="contacts" style="background-image: url('resources/hex2.png');">-------</a></li>
+				</ul>
+				
+			</div>
+		
+			<!-- CONTENT -->
+			<div class="col-sm-10">
+			
+			{{radioModel || 'null'}}
+			{{translation.HELLO_HABR}}
+
+				<!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+				<div ui-view ></div>
+				
+				<!-- SHOW OFF OUR FORMDATA OBJECT -->
+				<!-- <pre>
+					{{ formData }}
+				</pre> -->
+			</div>			
+		
+		<!-- FOOTER -->
+		<!-- <div class="navbar-fixed-bottom row-fluid"> -->
+			<div class="navbar-inner">
+			<div class="container">
+				<div id="footer" style="background-color:#8822C2;clear:both;text-align:center;">
+				<h4>Copyright © 2015 Evgeny Dolgalev<h4>
+				</div>
+			</div></div>
+		<!-- </div> -->
+		
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,12 @@
+{  
+	"MENU_MUSIC" : "Music",
+	"MENU_DISC" : "Discography",
+	"MENU_FOTO" : "Fotoalbum",
+	"MENU_PUB" : "Publications",
+	"MENU_BIO" : "Biography",
+	"MENU_CONT" : "Contacts",
+	
+    "COLOR" : "Color",
+    "HELLO" : "Hello",
+    "HELLO_HABR" : "Hello Habrahabr!"
+}
