@@ -47,9 +47,9 @@ routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
 		})
 
 		.state('pub', {
-			url: '/pub',
+			url: '/pub/:pageId',
 			templateUrl: function(stateParams) {
-                  return 'content/' + languageMode + '/publications_' + curPage + '.html';
+                  return 'content/' + languageMode + '/publications_' + (stateParams.pageId || 1) + '.html';
 			}
 		})
 
@@ -65,7 +65,7 @@ routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
 			templateUrl: function(stateParams) {
                   return 'content/' + languageMode + '/contacts.html';
 			}
-		})
+		});
 
 }); // closes $routerApp.config()
 
@@ -73,14 +73,9 @@ routerApp.controller('PaginationCtrl', function ($scope, $log, $state) {
 	$scope.totalItems = 25;//what the fuck 25 equal to 3 pagination buttons?
 	$scope.currentPage = curPage;
 
-	$scope.setPage = function (pageNo) {
-		$scope.currentPage = pageNo;
-	};
-
 	$scope.loadPage = function() {
-		curPage = $scope.currentPage;
-		$state.forceReload();
-	}
+		 $state.go('pub', { pageId: $scope.currentPage });
+	};
 
  /* $scope.maxSize = 5;
   $scope.bigTotalItems = 10;
