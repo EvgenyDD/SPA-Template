@@ -15,7 +15,7 @@
 
 	<!-- JS (load ANGULAR, ui-router, and custom JS file) -->
 	<!-- <script src="http://code.angularjs.org/1.2.13/angular.js"></script> -->
-	<script src="script/angular.min.js"></script>
+	<script src="script/angular.js"></script> <!-- min _ not working bg-image -->
 	<script src="script/angular-ui-router.min.js"></script>
 	
 	<script src="script/app.js"></script>
@@ -36,10 +36,24 @@
 	
 </head>
 
-<body ng-app="routerApp" ng-controller="MainController" style="margin-bottom: 60px;">
+<body ng-app="routerApp" ng-controller="MainController" bg-img 
+     data-bg-src="http://i.imgur.com/Fi0EUCm.jpg" 
+     data-bg-size="cover"
+     data-bg-repeat="no-repeat"
+     data-bg-attachment="fixed">
 
+	<!-- <div class="overlay layer1" bg-img 
+     data-bg-src="http://i.imgur.com/Fi0EUCm.jpg" 
+     data-bg-size="cover"
+     data-bg-repeat="no-repeat"
+     data-bg-attachment="fixed">
+      <div class="col4 offset-left3">
+        <input type="text" class="bg-black color-white radius5 no-margin font-fontawesome center-content" placeholder="&nbsp; &#xf030; &nbsp;Paste an img url ..." ng-keyup="setBg($event.target.value)"/>
+      </div>
+    </div> -->
+	
 	<!-- CONTAINER -->
-	<div class="container" >
+	<div class="container" 
 	
 		<!-- HEADER -->
 		<div class="row">
@@ -99,13 +113,13 @@
 			</div> <!-- CONTENT -->		
 		</div> <!-- MENU+CONTENT -->
 		
-		<!-- FOOTER -->
+		<!-- FOOTER 
 		<div class="row">
 			<div style="position:absolute; bottom:0; height:60px; width:85%; background-color:#f5f5f5; float:left; left:7%;">
-			<!-- ^^oh shit! this is fully awful markup^^ -->
+			 ^^oh shit! this is fully awful markup^^
 					<h4>Copyright © 2015 Evgeny Dolgalev<h4>
 			</div>
-		</div> <!-- FOOTER -->
+		</div> -->
 		
 	</div> <!-- container -->	
 	

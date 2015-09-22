@@ -4,16 +4,15 @@ body {
 	background: none;
 }
 
+/*
 .full {
 	background: url('../resources/bg.jpg') repeat ; 
-	/*-webkit-transition-property: background;
-	-webkit-transition-duration: 0.5s;
-	-webkit-transition-timing-function: ease;*/
+
 	background-attachment: fixed;
 	
 	
  
-}
+}*/
 /*
 div.ui-view{
 	opacity: 0.5;

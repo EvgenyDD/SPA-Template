@@ -1,6 +1,7 @@
 // app.js
 var routerApp = angular.module('routerApp', ['ui.router', 'ui.bootstrap', 'ngResource', 'bootstrapLightbox']);
 var languageMode = 'by';
+var pictBack = '/resources/bg.jpg';
 
 routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
@@ -34,6 +35,9 @@ routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
 		.state('discog', {
 			url: '/discography',
 			templateUrl: function(stateParams) {
+											console.log('#changing: step 1');
+												  setBg('resources/3.jpg'); /* ALLLLLLLLL HERE - changing background image*/
+											console.log('#changing: step 2');	  /* this is unreachable ((( */
                   return 'content/' + languageMode + '/discography.html';
 			}
 		})
@@ -112,6 +116,35 @@ routerApp.service('translationService', function($resource) {
 		});
 	};
 }); // closes $routerApp.service(translationService)
+
+
+/* from http://codepen.io/45kb/pen/EsAdI */
+routerApp.directive('bgImg', [function () {
+  return {
+    'restrict': 'A',
+    'scope': true,
+    'link': function ($scope, element, attrs) {
+      
+    $scope.setBg = function (srcImg) {
+        console.log('#changing: step 1.1');
+		if (!!!srcImg) {
+			element[0].style.backgroundImage =  'url(' + attrs.bgSrc + ') ';
+		} else {
+			element[0].style.backgroundImage =  'url(' + srcImg + ') ';
+		}
+	   
+		console.log('#changing :' +  element[0].style.backgroundImage);
+
+		element[0].style.backgroundRepeat = attrs.bgRepeat;
+		element[0].style.backgroundSize = attrs.bgSize;
+		element[0].style.backgroundAttachment = attrs.bgAttachment;
+	};
+      
+    $scope.setBg();
+    }
+  };
+  
+}]);
 
 
 routerApp.controller('GalleryCtrl', function ($scope, Lightbox) {
