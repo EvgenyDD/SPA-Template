@@ -35,9 +35,6 @@ routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
 		.state('discog', {
 			url: '/discography',
 			templateUrl: function(stateParams) {
-											console.log('#changing: step 1');
-												  setBg('resources/3.jpg'); /* ALLLLLLLLL HERE - changing background image*/
-											console.log('#changing: step 2');	  /* this is unreachable ((( */
                   return 'content/' + languageMode + '/discography.html';
 			}
 		})
@@ -221,3 +218,4 @@ routerApp.controller('GalleryCtrl', function ($scope, Lightbox) {
     return image.label;
   };*/
 });
+/*console.log();*/
