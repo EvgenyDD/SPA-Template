@@ -1,12 +1,11 @@
 // app.js
 var routerApp = angular.module('routerApp', ['ui.router', 'ui.bootstrap', 'ngResource', 'bootstrapLightbox']);
 var languageMode = 'by';
-var pictBack = '/resources/bg.jpg';
 
 var backgroundImagesForStates = {
-  'music': 'http://www.pulsarwallpapers.com/data/media/3/Alien%20Ink%202560X1600%20Abstract%20Background.jpg',
-  'home': 'http://www.mrwallpaper.com/wallpapers/gradient-background.jpg',
-  'pub': 'http://pre14.deviantart.net/78d0/th/pre/f/2013/174/3/e/recycled_texture_background_by_sandeep_m-d6aeau9.jpg'
+  'music': 'resources/1.jpg',
+  'home': 'resources/2.jpg',
+  'pub': 'resources/3.jpg'
 };
 
 routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
@@ -55,7 +54,6 @@ routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
 		.state('pub', {
 			url: '/pub/:pageId',
 			templateUrl: function(stateParams) {
-        stateParams.pubTest = 1;
                   return 'content/' + languageMode + '/publications_' + (stateParams.pageId || 1) + '.html';
 			}
 		})
@@ -122,37 +120,34 @@ routerApp.service('translationService', function($resource) {
 }); // closes $routerApp.service(translationService)
 
 
-/* from http://codepen.io/45kb/pen/EsAdI */
 routerApp.directive('bgImg', [function () {
-  return {
-    'restrict': 'A',
-    'scope': true,
-    'link': function ($scope, element, attrs) {
+	return {
+		'restrict': 'A',
+		'scope': true,
+		'link': function ($scope, element, attrs) {
 
-    var setBg = function (srcImg) {
-      console.log('#changing: step 1.1');
-      if (!!!srcImg) {
-      element[0].style.backgroundImage =  'url(' + attrs.bgSrc + ') ';
-      } else {
-      element[0].style.backgroundImage =  'url(' + srcImg + ') ';
-      }
+		var setBg = function (srcImg) {
+			console.log('#changing: step 1.1');
+			if (!!!srcImg) {
+				element[0].style.backgroundImage =  'url(' + attrs.bgSrc + ') ';
+			} else {
+				element[0].style.backgroundImage =  'url(' + srcImg + ') ';
+			}
 
-      console.log('#changing :' +  element[0].style.backgroundImage);
+			console.log('#changing :' +  element[0].style.backgroundImage);
 
-      element[0].style.backgroundRepeat = attrs.bgRepeat;
-      element[0].style.backgroundSize = attrs.bgSize;
-      element[0].style.backgroundAttachment = attrs.bgAttachment;
-    };
+			element[0].style.backgroundRepeat = attrs.bgRepeat;
+			element[0].style.backgroundSize = attrs.bgSize;
+			element[0].style.backgroundAttachment = attrs.bgAttachment;
+		};
 
-  $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-    if (Object.keys(backgroundImagesForStates).lastIndexOf(toState.name) > -1) {
-      setBg(backgroundImagesForStates[toState.name]);
-    }
-  });
-
-}};
-
-}]);
+		$scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+			if (Object.keys(backgroundImagesForStates).lastIndexOf(toState.name) > -1) {
+			  setBg(backgroundImagesForStates[toState.name]);
+			}
+		});
+	}};
+}]); //closes $routerApp.directive('bgImg')
 
 
 routerApp.controller('GalleryCtrl', function ($scope, Lightbox) {
