@@ -1,5 +1,5 @@
 <div ng-controller="PaginationCtrl">
-<pagination boundary-links="true" total-items=21 ng-model="currentPage" ng-change="loadPage()" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+<pagination boundary-links="true" total-items=4 items-per-page=1 ng-model="currentPage" ng-change="loadPage()" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
 <p>publications by #1</p>
 
 <img src="resources/1.jpg" width=600px;>
@@ -12,7 +12,7 @@
     <pagination direction-links="false" total-items="totalItems" ng-model="currentPage" num-pages="smallnumPages"></pagination> -->
 	
 	<p></p>
-	<pagination boundary-links="true" total-items=21 ng-model="currentPage" ng-change="loadPage()" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+	<pagination boundary-links="true" total-items=4 items-per-page=1 ng-model="currentPage" ng-change="loadPage()" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
 	
     <pre>The selected page no: {{currentPage}}</pre>
     
