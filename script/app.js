@@ -3,6 +3,12 @@ var routerApp = angular.module('routerApp', ['ui.router', 'ui.bootstrap', 'ngRes
 var languageMode = 'by';
 var pictBack = '/resources/bg.jpg';
 
+var backgroundImagesForStates = {
+  'music': 'http://www.pulsarwallpapers.com/data/media/3/Alien%20Ink%202560X1600%20Abstract%20Background.jpg',
+  'home': 'http://www.mrwallpaper.com/wallpapers/gradient-background.jpg',
+  'pub': 'http://pre14.deviantart.net/78d0/th/pre/f/2013/174/3/e/recycled_texture_background_by_sandeep_m-d6aeau9.jpg'
+};
+
 routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
 
@@ -49,6 +55,7 @@ routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
 		.state('pub', {
 			url: '/pub/:pageId',
 			templateUrl: function(stateParams) {
+        stateParams.pubTest = 1;
                   return 'content/' + languageMode + '/publications_' + (stateParams.pageId || 1) + '.html';
 			}
 		})
@@ -73,7 +80,7 @@ routerApp.controller('PaginationCtrl', function ($scope, $log, $stateParams, $st
 	$scope.currentPage = $stateParams.pageId;
 
 	$scope.loadPage = function() {
-		 $state.go('pub', { pageId: $scope.currentPage });	 
+		 $state.go('pub', { pageId: $scope.currentPage });
 	};
 });
 
@@ -121,26 +128,30 @@ routerApp.directive('bgImg', [function () {
     'restrict': 'A',
     'scope': true,
     'link': function ($scope, element, attrs) {
-      
-    $scope.setBg = function (srcImg) {
-        console.log('#changing: step 1.1');
-		if (!!!srcImg) {
-			element[0].style.backgroundImage =  'url(' + attrs.bgSrc + ') ';
-		} else {
-			element[0].style.backgroundImage =  'url(' + srcImg + ') ';
-		}
-	   
-		console.log('#changing :' +  element[0].style.backgroundImage);
 
-		element[0].style.backgroundRepeat = attrs.bgRepeat;
-		element[0].style.backgroundSize = attrs.bgSize;
-		element[0].style.backgroundAttachment = attrs.bgAttachment;
-	};
-      
-    $scope.setBg();
+    var setBg = function (srcImg) {
+      console.log('#changing: step 1.1');
+      if (!!!srcImg) {
+      element[0].style.backgroundImage =  'url(' + attrs.bgSrc + ') ';
+      } else {
+      element[0].style.backgroundImage =  'url(' + srcImg + ') ';
+      }
+
+      console.log('#changing :' +  element[0].style.backgroundImage);
+
+      element[0].style.backgroundRepeat = attrs.bgRepeat;
+      element[0].style.backgroundSize = attrs.bgSize;
+      element[0].style.backgroundAttachment = attrs.bgAttachment;
+    };
+
+  $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+    if (Object.keys(backgroundImagesForStates).lastIndexOf(toState.name) > -1) {
+      setBg(backgroundImagesForStates[toState.name]);
     }
-  };
-  
+  });
+
+}};
+
 }]);
 
 
@@ -209,7 +220,7 @@ routerApp.controller('GalleryCtrl', function ($scope, Lightbox) {
   $scope.openLightboxModal = function (index) {
     Lightbox.openModal($scope.images, index);
   };
-  
+
  /* Lightbox.getImageUrl = function (image) {
     return '/resources/' + image.getName();
   };
