@@ -24,11 +24,12 @@
 	<script src="script/angular-route.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular-resource.min.js"></script>
 	
-	<link rel="stylesheet" href="script/angular-bootstrap-lightbox.css">
-	<script src="script/angular-bootstrap-lightbox.js"></script>
+	<!-- <link href="css/lightbox.css" rel="stylesheet"> -->
 	
-	<script src="script/angular-touch.js"></script> <!-- for lightbox swipe enable --> <!-- not working -->
-	<script src="script/loading-bar.js"></script> <!-- for lightbox loading bar enable --> <!-- not working -->
+
+
+	<link rel="stylesheet" href="script/angular-bootstrap-lightbox.css">
+	<script src="script/angular-bootstrap-lightbox.js"></script> 
 	
 	<!-- SOMETHING /////////////// -->
 	<meta http-equiv="KEYWORDS" content="тег, структура html, заголовок страницы, ключевые слова тут">
@@ -41,6 +42,8 @@
      data-bg-size="cover"
      data-bg-repeat="no-repeat"
      data-bg-attachment="fixed">
+	 
+<!-- 	 <script src="script/lightbox-plus-jquery.min.js"></script>	 -->
 
 	<!-- <div class="overlay layer1" bg-img 
      data-bg-src="http://i.imgur.com/Fi0EUCm.jpg" 
@@ -86,7 +89,7 @@
 			<!-- MENU -->
 			<div class="col-sm-2">
 				<ul class="nav nav-pills nav-stacked" style="text-align:right; height:100%;">
-					<li><a ui-sref="music" style="background-image: url('resources/hex0.png');">{{translation.MENU_MUSIC}}</a></li>
+					<li><a class="noteone" ui-sref="music" >{{translation.MENU_MUSIC}}</a></li>
 					<li><a ui-sref="discog" style="background-image: url('resources/hex1.png');">{{translation.MENU_DISC}}</a></li>
 					<li><a ui-sref="foto" style="background-image: url('resources/hex1.png');">{{translation.MENU_FOTO}}</a></li>
 					<li><a ui-sref="pub" style="background-image: url('resources/hex2.png');">{{translation.MENU_PUB}}</a></li>
@@ -99,8 +102,7 @@
 			<!-- CONTENT -->
 			<div class="col-sm-10">
 			
-				{{radioModel || 'null'}}
-				{{translation.HELLO_HABR}}
+				<!-- {{radioModel || 'null'}} -->
 
 				<!-- THIS IS WHERE WE WILL INJECT CONTENT -->
 				<div ui-view autoscroll="false"></div>
@@ -122,6 +124,6 @@
 		</div> -->
 		
 	</div> <!-- container -->	
-	
+
 </body>
 </html>

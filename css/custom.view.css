@@ -4,6 +4,20 @@ body {
 	background: none;
 }
 
+a.noteone{
+border:100px;
+	background-image: url('../resources/hex0.png');
+	background-repeat: no-repeat;
+	/*background-clip:content-box;*/
+}
+
+a.noteone:hover{
+border:200px;
+	background-image: url('../resources/hex1.png');
+	background-repeat: no-repeat;
+	/*background-clip:content-box;*/
+}
+
 /*
 .full {
 	background: url('../resources/bg.jpg') repeat ; 

@@ -3,9 +3,13 @@ var routerApp = angular.module('routerApp', ['ui.router', 'ui.bootstrap', 'ngRes
 var languageMode = 'by';
 
 var backgroundImagesForStates = {
-  'music': 'resources/1.jpg',
-  'home': 'resources/2.jpg',
-  'pub': 'resources/3.jpg'
+	'home': 		'resources/1.jpg',
+	'music': 		'resources/1.jpg',
+	'discog': 		'resources/2.jpg',
+	'foto':			'resources/2.jpg',
+	'pub': 			'resources/3.jpg',
+	'biogr':		'resources/2.jpg',
+	'contacts':		'resources/1.jpg'	
 };
 
 routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
@@ -73,6 +77,7 @@ routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
 		});
 
 }); // closes $routerApp.config()
+
 
 routerApp.controller('PaginationCtrl', function ($scope, $log, $stateParams, $state) {
 	$scope.currentPage = $stateParams.pageId;
@@ -216,12 +221,6 @@ routerApp.controller('GalleryCtrl', function ($scope, Lightbox) {
     Lightbox.openModal($scope.images, index);
   };
 
- /* Lightbox.getImageUrl = function (image) {
-    return '/resources/' + image.getName();
-  };
 
-  Lightbox.getImageCaption = function (image) {
-    return image.label;
-  };*/
 });
 /*console.log();*/
