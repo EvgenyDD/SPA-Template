@@ -90,11 +90,11 @@ routerApp.controller('PaginationCtrl', function ($scope, $log, $stateParams, $st
 routerApp.controller('MainController', function ($scope, $state, translationService) {
 	$scope.radioModel = languageMode;
 
-	$scope.checkModel = {
+	/*$scope.checkModel = {
 		BY: true,
 		EN: false,
 		RU: false
-	};
+	};*/
 
 	$scope.$watch('radioModel', function (val) {
 		var loaded = false;

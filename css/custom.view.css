@@ -80,20 +80,18 @@ ul.nav li.active a {
 
 #retBtn{
 	background: transparent;
-	color: transparent;
+	color: rgba(100,200,50,0.5);
 	border: none;
+	padding-bottom: 50%;
 	position: fixed; 
 	height: 100%; 
 	width: 5%; 
+	top: 0;
 }
 
 #retBtn:hover{
-	background: transparent;
-	color: transparent;
-	border: none;
-	position: fixed; 
-	height: 100%; 
-	width: 5%; 
+	background: rgba(10,10,10,0.5);
+	color: rgb(100,200,50);	
 	cursor: n-resize;
 }
 
