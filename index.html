@@ -22,7 +22,7 @@
 	
 	<script src="script/ui-bootstrap-tpls-0.11.0.js"></script>
 	<script src="script/angular-route.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.2/angular-resource.min.js"></script>
+	<script src="script/angular-resource.min.js"></script>
 	
 	<!-- <link href="css/lightbox.css" rel="stylesheet"> -->
 	
@@ -43,6 +43,10 @@
      data-bg-repeat="no-repeat"
      data-bg-attachment="fixed">
 	 
+	 <button id="retBtn" ng-controller="ScrollCtrl" ng-click="gotoElement('top')">Go to top</button>
+	 
+	 <!-- <button type="submit" class="btn btn-default" style="position:absolute"> -->
+	 
 <!-- 	 <script src="script/lightbox-plus-jquery.min.js"></script>	 -->
 
 	<!-- <div class="overlay layer1" bg-img 
@@ -59,7 +63,7 @@
 	<div class="container" 
 	
 		<!-- HEADER -->
-		<div class="row">
+		<div class="row" id="top">
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<!-- Header text -->	
@@ -87,15 +91,15 @@
 		<div class="row">
 		
 			<!-- MENU -->
-			<div class="col-sm-2">
-				<ul class="nav nav-pills nav-stacked" style="text-align:right; height:100%;">
-					<li><a class="noteone" ui-sref="music" >{{translation.MENU_MUSIC}}</a></li>
-					<li><a ui-sref="discog" style="background-image: url('resources/hex1.png');">{{translation.MENU_DISC}}</a></li>
-					<li><a ui-sref="foto" style="background-image: url('resources/hex1.png');">{{translation.MENU_FOTO}}</a></li>
-					<li><a ui-sref="pub" style="background-image: url('resources/hex2.png');">{{translation.MENU_PUB}}</a></li>
-					<li><a ui-sref="biogr" style="background-image: url('resources/hex0.png');">{{translation.MENU_BIO}}</a></li>
-					<li><a ui-sref="contacts" style="background-image: url('resources/hex1.png');">{{translation.MENU_CONT}}</a></li>
-					<li><a ui-sref="contacts" style="background-image: url('resources/hex2.png');">-------</a></li>
+			<div class="col-sm-2" style="padding-right:0;padding-left:0;">
+				<ul id="menu" class="nav nav-pills nav-stacked" style="text-align:left;">
+					<li><a class="note1" ui-sref="music">{{translation.MENU_MUSIC}}</a></li>
+					<li><a class="note2" ui-sref="discog">{{translation.MENU_DISC}}</a></li>
+					<li><a class="note2" ui-sref="foto">{{translation.MENU_FOTO}}</a></li>
+					<li><a class="note3" ui-sref="pub">{{translation.MENU_PUB}}</a></li>
+					<li><a class="note1" ui-sref="biogr">{{translation.MENU_BIO}}</a></li>
+					<li><a class="note2" ui-sref="contacts">{{translation.MENU_CONT}}</a></li>
+					<li><a class="note3" ui-sref="contacts">-------</a></li>
 				</ul>			
 			</div>
 		
@@ -114,6 +118,8 @@
 				
 			</div> <!-- CONTENT -->		
 		</div> <!-- MENU+CONTENT -->
+		
+		
 		
 		<!-- FOOTER 
 		<div class="row">

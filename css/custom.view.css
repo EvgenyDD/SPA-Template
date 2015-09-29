@@ -4,18 +4,97 @@ body {
 	background: none;
 }
 
-a.noteone{
-border:100px;
-	background-image: url('../resources/hex0.png');
-	background-repeat: no-repeat;
-	/*background-clip:content-box;*/
+#menu li {
+ margin-top: 0px;
 }
 
-a.noteone:hover{
-border:200px;
+a.note1:link {
+	border-radius: 0px;
+	padding-left: 70px;
+	padding-bottom: 15px;
+	background: url('../resources/hex0.png');
+	background-repeat: no-repeat;	
+}
+
+a.note1:hover{
+	border-radius: 0px;
+	padding-left: 71px;
+	padding-bottom: 16px;
+	background: url('../resources/hex0hover.png');
+	background-repeat: no-repeat;	
+}
+
+a.note2:link {
+	border-radius: 0px;
+	padding-left: 70px;
+	padding-bottom: 15px;
 	background-image: url('../resources/hex1.png');
 	background-repeat: no-repeat;
-	/*background-clip:content-box;*/
+}
+
+a.note2:hover{
+	border-radius: 0px;
+	padding-left: 71px;
+	padding-bottom: 16px;
+	background-image: url('../resources/hex1hover.png');
+	background-repeat: no-repeat;	
+	
+}
+
+a.note3:link {
+	border-radius: 0px;
+	padding-left: 70px;
+	padding-bottom: 15px;
+	background-image: url('../resources/hex2.png');
+	background-repeat: no-repeat;
+}
+
+a.note3:hover{
+	border-radius: 0px;
+	padding-left: 71px;
+	padding-bottom: 16px;
+	background-image: url('../resources/hex2hover.png');
+	background-repeat: no-repeat;	
+}
+
+ul.nav li a, ul.nav li a:visited {
+    color: Black;
+	font-family: Georgia, serif;
+	font-size: 1.4em;
+	/*font-weight: bold;*/
+}
+
+ul.nav li a:hover, ul.nav li a:active {
+    color: Blue;
+	font-family: Georgia, serif;
+	font-size: 1.4em;
+	/*font-weight: bold;*/
+}
+
+ul.nav li.active a {
+    color: Black;
+	font-family: Georgia, serif;
+	font-size: 1.4em;
+	/*font-weight: bold;*/
+}
+
+#retBtn{
+	background: transparent;
+	color: transparent;
+	border: none;
+	position: fixed; 
+	height: 100%; 
+	width: 5%; 
+}
+
+#retBtn:hover{
+	background: transparent;
+	color: transparent;
+	border: none;
+	position: fixed; 
+	height: 100%; 
+	width: 5%; 
+	cursor: n-resize;
 }
 
 /*
@@ -23,8 +102,6 @@ border:200px;
 	background: url('../resources/bg.jpg') repeat ; 
 
 	background-attachment: fixed;
-	
-	
  
 }*/
 /*
