@@ -8,7 +8,41 @@ body {
  margin-top: 0px;
 }
 
-a.note1:link {
+
+
+/*
+a.note1.active{
+
+	background: url('../resources/hex1hover.png');
+	background-repeat: no-repeat;
+		color: rgba(255,0,0, 0.5);
+}
+*/
+/*a.note1:link {*/
+
+
+
+/*
+a.note1 {	
+	border-radius: 0px;
+	padding-left: 70px;
+	padding-bottom: 15px;
+	background: url('../resources/2.jpg');
+	background-repeat: no-repeat;	
+	
+}*/
+/**
+
+}
+
+
+}
+*//*
+
+}*/
+
+/* note1 class */
+li a.note1{	
 	border-radius: 0px;
 	padding-left: 70px;
 	padding-bottom: 15px;
@@ -16,15 +50,24 @@ a.note1:link {
 	background-repeat: no-repeat;	
 }
 
-a.note1:hover{
-	border-radius: 0px;
-	padding-left: 71px;
-	padding-bottom: 16px;
-	background: url('../resources/hex0hover.png');
+li a.note1active{	
+	padding-left: 70px;
+	padding-bottom: 15px;
+	background-image: url('../resources/hex0active.png');
 	background-repeat: no-repeat;	
 }
 
-a.note2:link {
+li a.note1:hover{
+	border-radius: 0px;
+	padding-left: 71px;
+	padding-bottom: 16px;
+	background-image: url('../resources/hex0hover.png');
+	background-repeat: no-repeat;	
+}
+
+
+/* note2 class */
+li a.note2{
 	border-radius: 0px;
 	padding-left: 70px;
 	padding-bottom: 15px;
@@ -32,7 +75,14 @@ a.note2:link {
 	background-repeat: no-repeat;
 }
 
-a.note2:hover{
+li a.note2active{	
+	padding-left: 70px;
+	padding-bottom: 15px;
+	background-image: url('../resources/hex1active.png');
+	background-repeat: no-repeat;	
+}
+
+li a.note2:hover{
 	border-radius: 0px;
 	padding-left: 71px;
 	padding-bottom: 16px;
@@ -41,7 +91,9 @@ a.note2:hover{
 	
 }
 
-a.note3:link {
+
+/* note3 class */
+li a.note3{
 	border-radius: 0px;
 	padding-left: 70px;
 	padding-bottom: 15px;
@@ -49,7 +101,14 @@ a.note3:link {
 	background-repeat: no-repeat;
 }
 
-a.note3:hover{
+li a.note3active{	
+	padding-left: 70px;
+	padding-bottom: 15px;
+	background-image: url('../resources/hex2active.png');
+	background-repeat: no-repeat;	
+}
+
+li a.note3:hover{
 	border-radius: 0px;
 	padding-left: 71px;
 	padding-bottom: 16px;
@@ -57,10 +116,13 @@ a.note3:hover{
 	background-repeat: no-repeat;	
 }
 
+
+
 ul.nav li a, ul.nav li a:visited {
     color: Black;
 	font-family: Georgia, serif;
 	font-size: 1.4em;
+	text-align: left;
 	/*font-weight: bold;*/
 }
 
@@ -68,6 +130,7 @@ ul.nav li a:hover, ul.nav li a:active {
     color: Blue;
 	font-family: Georgia, serif;
 	font-size: 1.4em;
+	text-align: left;
 	/*font-weight: bold;*/
 }
 
@@ -75,8 +138,10 @@ ul.nav li.active a {
     color: Black;
 	font-family: Georgia, serif;
 	font-size: 1.4em;
+	text-align: left;
 	/*font-weight: bold;*/
 }
+
 
 #retBtn{
 	background: transparent;
