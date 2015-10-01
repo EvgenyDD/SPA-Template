@@ -1,5 +1,5 @@
 // app.js
-var routerApp = angular.module('routerApp', ['ui.router', 'ui.bootstrap', 'ngResource', 'bootstrapLightbox']);
+var routerApp = angular.module('routerApp', ['ui.router', 'ui.bootstrap', 'ngResource', 'bootstrapLightbox', 'LocalStorageModule']);
 var languageMode = 'by';
 
 var linkOne = [
@@ -84,6 +84,10 @@ routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
         };
         return $delegate;
     });
+	
+	var onlyLang = document.cookie.replace("language=",""); 
+	if(onlyLang=='by' || onlyLang=='en' || onlyLang=='ru')
+		languageMode = onlyLang;
 
     $stateProvider
 
@@ -158,7 +162,7 @@ routerApp.controller('HeaderController', function ($scope, $location, $state, $r
 	)
 	
 	$scope.isActive = function (viewLocation) {		
-		return viewLocation === /*$location.path()*/$state.current.name;	
+		return viewLocation === $state.current.name;	
     };
 });
 
@@ -170,6 +174,7 @@ routerApp.controller('MainController', function ($scope, $state, translationServ
 		var loaded = false;
 		return function (val) {
 			languageMode = val;
+			document.cookie = "language=" + languageMode;	
 
 			if (!loaded) {
 				loaded = true;

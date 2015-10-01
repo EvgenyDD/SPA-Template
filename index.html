@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="full" style="position:relative;  min-height:100%;">
 <head>  
-	<title>Official Site</title>
+	
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	
 	<!-- CSS (load BOOTSTRAP) -->
@@ -17,6 +17,8 @@
 	<!-- <script src="http://code.angularjs.org/1.2.13/angular.js"></script> -->
 	<script src="script/angular.js"></script> <!-- min _ not working bg-image -->
 	<script src="script/angular-ui-router.min.js"></script>
+	<!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular-cookies.js"></script> -->
+	<script src="script/angular-local-storage.js"></script>
 	
 	<script src="script/app.js"></script>
 	
@@ -34,6 +36,8 @@
 	<meta http-equiv="KEYWORDS" content="тег, структура html, заголовок страницы, ключевые слова тут">
 	<meta http-equiv="DESCRIPTION" content="Краткое описание страницы-- Описание структура html и элементов заголовка">	
 	
+	<link rel="SHORTCUT ICON" href="favicon.ico" type="image/x-icon">
+	
 </head>
 
 <body ng-app="routerApp" ng-controller="MainController" bg-img 
@@ -41,6 +45,10 @@
      data-bg-size="cover"
      data-bg-repeat="no-repeat"
      data-bg-attachment="fixed">
+	 
+	 
+	 <title>{{translation.SITE_TITLE}}</title>
+	 
 	 
 	 <button id="retBtn" ng-controller="ScrollCtrl" ng-click="gotoElement('top')">{{translation.GoTop}}</button>
 	 
