@@ -2,67 +2,6 @@
 var routerApp = angular.module('routerApp', ['ui.router', 'ui.bootstrap', 'ngResource', 'bootstrapLightbox', 'LocalStorageModule']);
 var languageMode = 'by';
 
-var linkOne = [
-    {
-      'url': 'https://farm6.staticflickr.com/5830/20552523531_e1efec8d49_k.jpg',
-      'thumbUrl': 'https://farm6.staticflickr.com/5830/20552523531_ef720cd2f1_s.jpg',
-      'caption': 'This image has dimensions 2048x1519 and the img element is scaled to fit inside the window.'
-    },
-    {
-      'url': 'https://farm8.staticflickr.com/7300/12807911134_ff56d1fb3b_b.jpg',
-      'thumbUrl': 'https://farm8.staticflickr.com/7300/12807911134_ff56d1fb3b_s.jpg'
-    },
-    {
-      'url': 'https://farm1.staticflickr.com/400/20228789791_52fb84917f_b.jpg',
-      'thumbUrl': 'https://farm1.staticflickr.com/400/20228789791_52fb84917f_s.jpg',
-      'caption': 'The left and right arrow keys are binded for navigation. The escape key for closing the modal is binded by AngularUI Bootstrap.'
-    },
-    {
-      'url': 'https://farm1.staticflickr.com/260/20185156095_912c2714ef_b.jpg',
-      'thumbUrl': 'https://farm1.staticflickr.com/260/20185156095_912c2714ef_s.jpg'
-    },
-    {
-      'url': 'https://farm6.staticflickr.com/5757/20359334789_57316968ed_m.jpg',
-      'thumbUrl': 'https://farm6.staticflickr.com/5757/20359334789_57316968ed_s.jpg',
-      'caption': 'Default minimum modal dimensions (400x200) apply for this image (240x95).'
-    },
-    {
-      'url': 'https://farm1.staticflickr.com/359/18741723375_28c89372d7_c.jpg',
-      'thumbUrl': 'https://farm1.staticflickr.com/359/18741723375_28c89372d7_s.jpg'
-    },
-    {
-      'url': 'https://farm6.staticflickr.com/5606/15425945368_6f6ae945fc.jpg',
-      'thumbUrl': 'https://farm6.staticflickr.com/5606/15425945368_6f6ae945fc_s.jpg'
-    },
-    {
-      'url': 'https://farm9.staticflickr.com/8033/8010849891_3f029d68b3_c.jpg',
-      'thumbUrl': 'https://farm9.staticflickr.com/8033/8010849891_3f029d68b3_s.jpg'
-    },
-    {
-      'url': 'https://farm1.staticflickr.com/553/18990336631_4856e7e02c_h.jpg',
-      'thumbUrl': 'https://farm1.staticflickr.com/553/18990336631_0186ac9e3e_s.jpg'
-    },
-    {
-      'url': 'https://farm9.staticflickr.com/8736/16599799789_458891e47f_h.jpg',
-      'thumbUrl': 'https://farm9.staticflickr.com/8736/16599799789_2fe489b6df_s.jpg',
-      'caption': 'The next image does not exist and shows how loading errors are handled by default.'
-    },
-    {
-      'url': '/does-not-exist.jpg',
-      'thumbUrl': '/does-not-exist.jpg',
-      'caption': 'This caption does not appear.'
-    },
-    {
-      'url': 'https://farm9.staticflickr.com/8573/16800210195_a8af2ba1bb_h.jpg',
-      'thumbUrl': 'https://farm9.staticflickr.com/8573/16800210195_85ab79b777_s.jpg',
-      'caption': 'The previous image does not exist and shows how loading errors are handled by default.'
-    },
-    {
-      'url': 'https://farm4.staticflickr.com/3870/14860034616_c0dd8cbc71_h.jpg',
-      'thumbUrl': 'https://farm4.staticflickr.com/3870/14860034616_1c941f4f06_s.jpg'
-    },
-  ];
-
 var backgroundImagesForStates = {
 'home': 'resources/1.jpg',
 'music': 'resources/1.jpg',
@@ -73,10 +12,11 @@ var backgroundImagesForStates = {
 'contacts':	'resources/1.jpg'	
 };
 
+
 routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
 
-	$provide.decorator('$state', function($delegate, $stateParams) {
+	$provide.decorator('$state', function($delegate, $stateParams) {	
         $delegate.forceReload = function() {
             return $delegate.go($delegate.current, $stateParams, {
                 reload: true, inherit: false, notify: true
@@ -85,7 +25,8 @@ routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
         return $delegate;
     });
 	
-	var onlyLang = document.cookie.replace("language=",""); 
+	allLang = document.cookie;
+	var onlyLang = allLang.replace("language=",""); 
 	if(onlyLang=='by' || onlyLang=='en' || onlyLang=='ru')
 		languageMode = onlyLang;
 
@@ -94,6 +35,7 @@ routerApp.config(function($provide, $stateProvider, $urlRouterProvider) {
         /* HOME STATES */
         .state('home', {
             url: '/home',
+			
             templateUrl: function(stateParams) {
                   return 'content/' + languageMode + '/home.html';
 			}
@@ -150,11 +92,10 @@ routerApp.controller('PaginationCtrl', function ($scope, $log, $stateParams, $st
 	$scope.loadPage = function() {
 		 $state.go('pub', { pageId: $scope.currentPage });	 
 	};
-});
+}); // closes $routerApp.controller(PaginationCtrl)
 
 
-
-routerApp.controller('HeaderController', function ($scope, $location, $state, $rootScope){
+routerApp.controller('MenuController', function ($scope, $location, $state, $rootScope){
 	$rootScope.$on('$stateChangeSuccess',
 	  function(event, toState, toParams, fromState, fromParams) {
 		$state.current = toState;
@@ -164,36 +105,37 @@ routerApp.controller('HeaderController', function ($scope, $location, $state, $r
 	$scope.isActive = function (viewLocation) {		
 		return viewLocation === $state.current.name;	
     };
-});
+}); // closes $routerApp.controller(MenuController)
 
 
-routerApp.controller('MainController', function ($scope, $state, translationService) {
+routerApp.controller('ContentController', function ($scope, $state, translationService, $window) {
 	$scope.radioModel = languageMode;
 
-	$scope.$watch('radioModel', function (val) {
+	$scope.$watch('radioModel', function (val) {		
 		var loaded = false;
 		return function (val) {
 			languageMode = val;
 			document.cookie = "language=" + languageMode;	
-
+			
+			translationService.getTranslation($scope);
+			
 			if (!loaded) {
 				loaded = true;
 			} else {
-				$state.forceReload();
-				translationService.getTranslation($scope);
+				$state.forceReload();					
 			}
 		};
     }());
-
-	translationService.getTranslation($scope);
-}); // closes $routerApp.controller(MainController)
+}); // closes $routerApp.controller(ContentController)
 
 
-routerApp.service('translationService', function($resource) {
+routerApp.service('translationService', function($resource, $window) {
 	this.getTranslation = function($scope) {
-		var languageFilePath = 'content/translation_' + languageMode + '.json';
+		var languageFilePath = 'content/translation_' + languageMode + '.json';	
+
 		$resource(languageFilePath).get(function (data) {
-			$scope.translation = data;
+			$scope.translation = data;	 
+			$window.document.title = $scope.translation.SITE_TITLE;	
 		});
 	};
 }); // closes $routerApp.service(translationService)
@@ -206,14 +148,11 @@ routerApp.directive('bgImg', [function () {
 		'link': function ($scope, element, attrs) {
 
 		var setBg = function (srcImg) {
-			console.log('#changing: step 1.1');
 			if (!!!srcImg) {
 				element[0].style.backgroundImage =  'url(' + attrs.bgSrc + ') ';
 			} else {
 				element[0].style.backgroundImage =  'url(' + srcImg + ') ';
-			}
-
-			console.log('#changing :' +  element[0].style.backgroundImage);
+			}	
 
 			element[0].style.backgroundRepeat = attrs.bgRepeat;
 			element[0].style.backgroundSize = attrs.bgSize;
@@ -225,90 +164,24 @@ routerApp.directive('bgImg', [function () {
 			  setBg(backgroundImagesForStates[toState.name]);
 			}
 		});
+		
 	}};
 }]); //closes $routerApp.directive('bgImg')
 
 
-routerApp.controller('GalleryCtrl', function ($scope, Lightbox) {
-	$scope.images = linkOne;
-   /*$scope.images = [
-    {
-      'url': 'https://farm6.staticflickr.com/5830/20552523531_e1efec8d49_k.jpg',
-      'thumbUrl': 'https://farm6.staticflickr.com/5830/20552523531_ef720cd2f1_s.jpg',
-      'caption': 'This image has dimensions 2048x1519 and the img element is scaled to fit inside the window.'
-    },
-    {
-      'url': 'https://farm8.staticflickr.com/7300/12807911134_ff56d1fb3b_b.jpg',
-      'thumbUrl': 'https://farm8.staticflickr.com/7300/12807911134_ff56d1fb3b_s.jpg'
-    },
-    {
-      'url': 'https://farm1.staticflickr.com/400/20228789791_52fb84917f_b.jpg',
-      'thumbUrl': 'https://farm1.staticflickr.com/400/20228789791_52fb84917f_s.jpg',
-      'caption': 'The left and right arrow keys are binded for navigation. The escape key for closing the modal is binded by AngularUI Bootstrap.'
-    },
-    {
-      'url': 'https://farm1.staticflickr.com/260/20185156095_912c2714ef_b.jpg',
-      'thumbUrl': 'https://farm1.staticflickr.com/260/20185156095_912c2714ef_s.jpg'
-    },
-    {
-      'url': 'https://farm6.staticflickr.com/5757/20359334789_57316968ed_m.jpg',
-      'thumbUrl': 'https://farm6.staticflickr.com/5757/20359334789_57316968ed_s.jpg',
-      'caption': 'Default minimum modal dimensions (400x200) apply for this image (240x95).'
-    },
-    {
-      'url': 'https://farm1.staticflickr.com/359/18741723375_28c89372d7_c.jpg',
-      'thumbUrl': 'https://farm1.staticflickr.com/359/18741723375_28c89372d7_s.jpg'
-    },
-    {
-      'url': 'https://farm6.staticflickr.com/5606/15425945368_6f6ae945fc.jpg',
-      'thumbUrl': 'https://farm6.staticflickr.com/5606/15425945368_6f6ae945fc_s.jpg'
-    },
-    {
-      'url': 'https://farm9.staticflickr.com/8033/8010849891_3f029d68b3_c.jpg',
-      'thumbUrl': 'https://farm9.staticflickr.com/8033/8010849891_3f029d68b3_s.jpg'
-    },
-    {
-      'url': 'https://farm1.staticflickr.com/553/18990336631_4856e7e02c_h.jpg',
-      'thumbUrl': 'https://farm1.staticflickr.com/553/18990336631_0186ac9e3e_s.jpg'
-    },
-    {
-      'url': 'https://farm9.staticflickr.com/8736/16599799789_458891e47f_h.jpg',
-      'thumbUrl': 'https://farm9.staticflickr.com/8736/16599799789_2fe489b6df_s.jpg',
-      'caption': 'The next image does not exist and shows how loading errors are handled by default.'
-    },
-    {
-      'url': '/does-not-exist.jpg',
-      'thumbUrl': '/does-not-exist.jpg',
-      'caption': 'This caption does not appear.'
-    },
-    {
-      'url': 'https://farm9.staticflickr.com/8573/16800210195_a8af2ba1bb_h.jpg',
-      'thumbUrl': 'https://farm9.staticflickr.com/8573/16800210195_85ab79b777_s.jpg',
-      'caption': 'The previous image does not exist and shows how loading errors are handled by default.'
-    },
-    {
-      'url': 'https://farm4.staticflickr.com/3870/14860034616_c0dd8cbc71_h.jpg',
-      'thumbUrl': 'https://farm4.staticflickr.com/3870/14860034616_1c941f4f06_s.jpg'
-    },
-  ];*/
+routerApp.controller('ScrollCtrl', function($scope, $location, anchorSmoothScroll) {
+	$scope.gotoElement = function (eID){
+		// set the location.hash to the id of
+		// the element you wish to scroll to.
+		$location.hash('bottom');
 
-  $scope.openLightboxModal = function (index) {
-  console.log("We are here");
-    Lightbox.openModal($scope.images, index);
-  };
-  
- /* Lightbox.getImageUrl = function (image) {
-    return '/resources/' + image.getName();
-  };
-
-  Lightbox.getImageCaption = function (image) {
-    return image.label;
-  };*/
-});
+		// call $anchorScroll()
+		anchorSmoothScroll.scrollTo(eID);      
+	};
+}); //closes $routerApp.controller('ScrollCtrl')
 
 
-routerApp.service('anchorSmoothScroll', function(){
-    
+routerApp.service('anchorSmoothScroll', function(){   
     this.scrollTo = function(eID) {        
         var startY = currentYPosition();
         var stopY = elmYPosition(eID);
@@ -353,22 +226,4 @@ routerApp.service('anchorSmoothScroll', function(){
             } return y;
         }
     };  
-});
-
-
-routerApp.controller('ScrollCtrl', function($scope, $location, anchorSmoothScroll) {
-    
-    $scope.gotoElement = function (eID){
-	console.log("_____OMG");
-      // set the location.hash to the id of
-      // the element you wish to scroll to.
-      $location.hash('bottom');
- 
-      // call $anchorScroll()
-      anchorSmoothScroll.scrollTo(eID);
-      
-    };
-  });
-
-
-/*console.log();*/
+}); //closes $routerApp.service('anchorSmoothScroll')

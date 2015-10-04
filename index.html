@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="full" style="position:relative;  min-height:100%;">
 <head>  
-	
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">	
 	
 	<!-- CSS (load BOOTSTRAP) -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -37,18 +36,14 @@
 	<meta http-equiv="DESCRIPTION" content="Краткое описание страницы-- Описание структура html и элементов заголовка">	
 	
 	<link rel="SHORTCUT ICON" href="favicon.ico" type="image/x-icon">
+	<title>Official Web Site</title>
 	
 </head>
 
-<body ng-app="routerApp" ng-controller="MainController" bg-img 
-     data-bg-src="http://i.imgur.com/Fi0EUCm.jpg" 
-     data-bg-size="cover"
-     data-bg-repeat="no-repeat"
-     data-bg-attachment="fixed">
+<body ng-app="routerApp" ng-controller="ContentController" bg-img 
+     data-bg-size="cover" data-bg-repeat="no-repeat" data-bg-attachment="fixed">
 	 
-	 
-	 <title>{{translation.SITE_TITLE}}</title>
-	 
+	 <!-- <title>{{translation.SITE_TITLE}}</title> -->
 	 
 	 <button id="retBtn" ng-controller="ScrollCtrl" ng-click="gotoElement('top')">{{translation.GoTop}}</button>
 	 
@@ -59,13 +54,14 @@
 	
 		<!-- HEADER -->
 		<div class="row" id="top">
-			<div class="panel panel-default">
-				<div class="panel-body" style="background: url('resources/5.jpg'); background-size: 100% 100%;">
+			<div class="panel panel-default" style="border-radius:10px">
+				<div class="panel-body" style="background: url('resources/5.jpg'); background-size: 100% 100%; border-radius:10px">
 					<!-- Header text -->	
 					<div class="col-sm-8" >
 						<a ui-sref="home" >
-						<h3>{{translation.HEADER}}</h3></div>
+						<h3 style="font-family: Comic Sans MS, cursive, sans-serif; font-size:34px;">{{translation.HEADER}}</h3>
 						</a>
+					</div>
 						
 					<!-- Language RadioButtons -->	
 					<div class="col-sm-4">					
@@ -86,42 +82,31 @@
 		<div class="row">
 		
 			<!-- MENU -->
-			<div class="col-sm-2" style="padding-right:0;padding-left:0;">
-				<ul id="menu" class="nav nav-pills nav-stacked" style="text-align:left;" ng-controller="HeaderController">
-					<li><a ng-class="isActive('music') ? 'note1active' : 'note1'" ui-sref="music">{{translation.MENU_MUSIC}}</a></li>
-					<li><a ng-class="isActive('discog') ? 'note2active' : 'note2'" ui-sref="discog">{{translation.MENU_DISC}}</a></li>
-					<li><a ng-class="isActive('foto') ? 'note2active' : 'note2'" ui-sref="foto">{{translation.MENU_FOTO}}</a></li> 
-					<li><a ng-class="isActive('pub') ? 'note3active' : 'note3'" ui-sref="pub">{{translation.MENU_PUB}}</a></li>
-					<li><a ng-class="isActive('biogr') ? 'note1active' : 'note1'" ui-sref="biogr">{{translation.MENU_BIO}}</a></li>
-					<li><a ng-class="isActive('contacts') ? 'note2active' : 'note2'" ui-sref="contacts">{{translation.MENU_CONT}}</a></li>
-					<li><a ng-class="isActive('contacts') ? 'note3active' : 'note3'" ui-sref="contacts">-------</a></li>
+			<div class="col-sm-2" style="padding-right:0; padding-left:0;">
+				<ul id="menu" class="nav nav-pills nav-stacked" style="text-align:left;" ng-controller="MenuController">
+					<li style="height:53px"><a ng-class="isActive('music') ? 'note1active' : 'note1'" ui-sref="music">{{translation.MENU_MUSIC}}</a></li>
+					<li style="height:53px"><a ng-class="isActive('discog') ? 'note2active' : 'note2'" ui-sref="discog">{{translation.MENU_DISC}}</a></li>
+					<li style="height:53px"><a ng-class="isActive('foto') ? 'note2active' : 'note2'" ui-sref="foto">{{translation.MENU_FOTO}}</a></li> 
+					<li style="height:53px"><a ng-class="isActive('pub') ? 'note3active' : 'note3'" ui-sref="pub">{{translation.MENU_PUB}}</a></li>
+					<li style="height:53px"><a ng-class="isActive('biogr') ? 'note1active' : 'note1'" ui-sref="biogr">{{translation.MENU_BIO}}</a></li>
+					<li style="height:53px"><a ng-class="isActive('contacts') ? 'note2active' : 'note2'" ui-sref="contacts">{{translation.MENU_CONT}}</a></li>
+					<li style="height:53px"><a ng-class="isActive('contacts') ? 'note3active' : 'note3'" ui-sref="contacts">-------</a></li>
 				</ul>			
 			</div>
 		
 			<!-- CONTENT -->
 			<div class="col-sm-10">
-			
-				<!-- {{radioModel || 'null'}} -->
 
-				<!-- THIS IS WHERE WE WILL INJECT CONTENT -->
+				<!-- CONTENT INJECTION -->
 				<div ui-view autoscroll="false"></div>
 				
-				<!-- SHOW OFF OUR FORMDATA OBJECT -->
-				<!-- <pre>
-					{{ formData }}
-				</pre> -->
-				
 			</div> <!-- CONTENT -->		
-		</div> <!-- MENU+CONTENT -->
-		
+		</div> <!-- MENU+CONTENT -->	
 		
 		
 		<!-- FOOTER 
 		<div class="row">
-			<div style="position:absolute; bottom:0; height:60px; width:85%; background-color:#f5f5f5; float:left; left:7%;">
-			 ^^oh shit! this is fully awful markup^^
-					<h4>Copyright © 2015 Evgeny Dolgalev<h4>
-			</div>
+			<h4>Copyright © 2015 Evgeny Dolgalev<h4>
 		</div> -->
 		
 	</div> <!-- container -->	

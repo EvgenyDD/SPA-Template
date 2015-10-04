@@ -10,39 +10,10 @@ body {
 
 
 
-/*
-a.note1.active{
-
-	background: url('../resources/hex1hover.png');
-	background-repeat: no-repeat;
-		color: rgba(255,0,0, 0.5);
-}
-*/
-/*a.note1:link {*/
-
-
-
-/*
-a.note1 {	
-	border-radius: 0px;
-	padding-left: 70px;
-	padding-bottom: 15px;
-	background: url('../resources/2.jpg');
-	background-repeat: no-repeat;	
-	
-}*/
-/**
-
-}
-
-
-}
-*//*
-
-}*/
 
 /* note1 class */
 li a.note1{	
+	color: Black;
 	border-radius: 0px;
 	padding-left: 70px;
 	padding-bottom: 15px;
@@ -51,6 +22,8 @@ li a.note1{
 }
 
 li a.note1active{	
+	color: Green;
+	border-radius: 0px;
 	padding-left: 70px;
 	padding-bottom: 15px;
 	background-image: url('../resources/hex0active.png');
@@ -68,6 +41,7 @@ li a.note1:hover{
 
 /* note2 class */
 li a.note2{
+	color: Black;
 	border-radius: 0px;
 	padding-left: 70px;
 	padding-bottom: 15px;
@@ -76,6 +50,8 @@ li a.note2{
 }
 
 li a.note2active{	
+	color: Green;
+	border-radius: 0px;
 	padding-left: 70px;
 	padding-bottom: 15px;
 	background-image: url('../resources/hex1active.png');
@@ -94,6 +70,7 @@ li a.note2:hover{
 
 /* note3 class */
 li a.note3{
+	color: Black;
 	border-radius: 0px;
 	padding-left: 70px;
 	padding-bottom: 15px;
@@ -102,10 +79,13 @@ li a.note3{
 }
 
 li a.note3active{	
+	color: Green;
+	border-radius: 0px;
 	padding-left: 70px;
 	padding-bottom: 15px;
 	background-image: url('../resources/hex2active.png');
 	background-repeat: no-repeat;	
+	
 }
 
 li a.note3:hover{
@@ -119,10 +99,11 @@ li a.note3:hover{
 
 
 ul.nav li a, ul.nav li a:visited {
-    color: Black;
+    /*color: Black;*/
 	font-family: Georgia, serif;
 	font-size: 1.4em;
 	text-align: left;
+	
 	/*font-weight: bold;*/
 }
 
@@ -131,11 +112,13 @@ ul.nav li a:hover, ul.nav li a:active {
 	font-family: Georgia, serif;
 	font-size: 1.4em;
 	text-align: left;
+	/*color: rgb(255,0,0);*/
+	/*color: rgb(255,0,0);*/
 	/*font-weight: bold;*/
 }
 
 ul.nav li.active a {
-    color: Black;
+    
 	font-family: Georgia, serif;
 	font-size: 1.4em;
 	text-align: left;
@@ -145,13 +128,15 @@ ul.nav li.active a {
 
 #retBtn{
 	background: transparent;
-	color: rgba(100,200,50,0.5);
+	color: rgba(50,50,50,0.5);
 	border: none;
 	padding-bottom: 50%;
 	position: fixed; 
 	height: 100%; 
 	width: 5%; 
 	top: 0;
+	text-shadow: 1px 1px 0px #eee,
+                     1px 1px 0px #707070;
 }
 
 #retBtn:hover{
@@ -159,15 +144,3 @@ ul.nav li.active a {
 	color: rgb(100,200,50);	
 	cursor: n-resize;
 }
-
-/*
-.full {
-	background: url('../resources/bg.jpg') repeat ; 
-
-	background-attachment: fixed;
- 
-}*/
-/*
-div.ui-view{
-	opacity: 0.5;
-}*/
