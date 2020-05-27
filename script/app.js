@@ -227,3 +227,17 @@ routerApp.service('anchorSmoothScroll', function(){
         }
     };  
 }); //closes $routerApp.service('anchorSmoothScroll')
+
+
+routerApp.controller('myCtrl', function ($scope) {
+});
+
+routerApp.directive('hboTabs', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, elm, attrs) {
+            var jqueryElm = $(elm[0]);
+            $(jqueryElm).tabs()
+        }
+    };
+});
